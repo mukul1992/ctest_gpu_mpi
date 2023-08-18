@@ -25,5 +25,5 @@ echo "Fortran allreduce test" > mpi.log
 
 ### for cuda test with openmpi ###
 module load PrgEnv-nvidia  nvidia/23.1  openmpi
-mpifort -acc=gpu -Minfo=accel -o cuda_gpu_allreduce.x cuda_gpu_allreduce.f90
+mpifort -Mcuda -o cuda_gpu_allreduce.x cuda_gpu_allreduce.f90
 srun --mpi=pmix -N 1 -n 2 bash -c "export CUDA_VISIBLE_DEVICES=\$((3-SLURM_LOCALID)); ./cuda_gpu_allreduce.x" >> mpi.log
