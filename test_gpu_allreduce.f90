@@ -8,8 +8,8 @@ program test_gpu_allreduce
    !implicit none (type,external)
 
    integer, parameter :: dp = selected_real_kind(15,300)
-   !integer, parameter :: ll = 20480000
-   integer, parameter :: ll = 2048
+   integer, parameter :: ll = 20480000
+   !integer, parameter :: ll = 2048
    integer, parameter :: nn = 10
 
    integer :: comm

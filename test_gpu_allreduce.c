@@ -7,8 +7,8 @@ int main( int argc, char** argv )
     MPI_Init (&argc, &argv);
 
     int rank, size;
-    //int ll=20480000;
-    int ll=2048;
+    int ll=20480000;
+    //int ll=2048;
     int nn=10;
     int* buff = NULL;
     size_t bytes;
