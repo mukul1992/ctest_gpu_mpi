@@ -9,7 +9,7 @@ program GPUdirect
     integer,dimension(:),allocatable,device :: d_buff
     integer :: i
 
-    integer, parameter :: dp = selected_real_kind(15,300)
+   integer, parameter :: dp = selected_real_kind(15,300)
    integer, parameter :: ll = 20480000
    integer, parameter :: nn = 10
    integer :: ii
@@ -34,7 +34,7 @@ program GPUdirect
       flush(6)
    end if
 
-   ! CPU MPI
+   !!!!!!!!!!!!!!!!!!!!! CPU MPI !!!!!!!!!!!!!!!!!!!!!
 
    ! warm up
 
@@ -56,6 +56,8 @@ program GPUdirect
       write(6,"(2X,A,F10.3,A)") "CPU MPI:",(t2-t1)/nn,"s"
       flush(6)
    end if
+
+   !!!!!!!!!!!!!!!!!!!!! GPU MPI !!!!!!!!!!!!!!!!!!!!!
 
     ! Implicity copy rank to device
     d_rank = rank

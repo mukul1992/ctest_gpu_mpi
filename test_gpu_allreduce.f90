@@ -1,11 +1,15 @@
 program test_gpu_allreduce
 
-   use MPI
+   !use MPI
 
    implicit none
+   include 'mpif.h'
+
+   !implicit none (type,external)
 
    integer, parameter :: dp = selected_real_kind(15,300)
-   integer, parameter :: ll = 20480000
+   !integer, parameter :: ll = 20480000
+   integer, parameter :: ll = 2048
    integer, parameter :: nn = 10
 
    integer :: comm
@@ -38,7 +42,7 @@ program test_gpu_allreduce
       flush(6)
    end if
 
-   ! CPU MPI
+   !!!!!!!!!!!!!!!!!!!!! CPU MPI !!!!!!!!!!!!!!!!!!!!!
 
    ! warm up
 
@@ -63,7 +67,7 @@ program test_gpu_allreduce
       flush(6)
    end if
 
-   ! GPU MPI
+   !!!!!!!!!!!!!!!!!!!!! GPU MPI !!!!!!!!!!!!!!!!!!!!!
 
    buf(:) = 1
 
@@ -71,7 +75,9 @@ program test_gpu_allreduce
 
    ! warm up
 
+   print *, loc(buf)
    !$acc host_data use_device(buf)
+   print *, loc(buf)
    do ii = 1,nn
       call MPI_Allreduce(MPI_IN_PLACE,buf,ll,MPI_INTEGER,MPI_SUM,comm,ierr)
       !call MPI_Allreduce(buf,buf2,ll,MPI_INTEGER,MPI_SUM,comm,ierr)

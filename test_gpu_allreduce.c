@@ -7,7 +7,8 @@ int main( int argc, char** argv )
     MPI_Init (&argc, &argv);
 
     int rank, size;
-    int ll=20480000;
+    //int ll=20480000;
+    int ll=2048;
     int nn=10;
     int* buff = NULL;
     size_t bytes;
@@ -60,9 +61,12 @@ int main( int argc, char** argv )
     #pragma acc data copy(buff[0:ll])
     {
         // warm up
+        printf("%p\n",buff);
         // Inside this region the device data pointer will be used
         #pragma acc host_data use_device(buff)
         {
+            printf("%p\n",buff);
+
             for(i=0; i<nn; i++) {
                 MPI_Allreduce(MPI_IN_PLACE, buff, ll, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
             }

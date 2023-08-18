@@ -38,7 +38,7 @@ program test_gpu_allreduce
       flush(6)
    end if
 
-   ! CPU MPI
+   !!!!!!!!!!!!!!!!!!!!! CPU MPI !!!!!!!!!!!!!!!!!!!!!
 
    ! warm up
 
@@ -61,7 +61,7 @@ program test_gpu_allreduce
       flush(6)
    end if
 
-   ! GPU MPI
+   !!!!!!!!!!!!!!!!!!!!! GPU MPI !!!!!!!!!!!!!!!!!!!!!
 
 !!   !$acc data create(buf)
 

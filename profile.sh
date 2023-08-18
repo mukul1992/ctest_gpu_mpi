@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## profiling
+
 #SBATCH --job-name=test
 #SBATCH --time=00:10:00
 #SBATCH --account=nstaff
