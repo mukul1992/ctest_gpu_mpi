@@ -75,9 +75,9 @@ program test_gpu_allreduce
 
    ! warm up
 
-   print *, loc(buf)
+   !print *, loc(buf)
    !$acc host_data use_device(buf)
-   print *, loc(buf)
+   !print *, loc(buf)
    do ii = 1,nn
       call MPI_Allreduce(MPI_IN_PLACE,buf,ll,MPI_INTEGER,MPI_SUM,comm,ierr)
       !call MPI_Allreduce(buf,buf2,ll,MPI_INTEGER,MPI_SUM,comm,ierr)

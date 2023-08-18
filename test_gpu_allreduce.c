@@ -61,11 +61,11 @@ int main( int argc, char** argv )
     #pragma acc data copy(buff[0:ll])
     {
         // warm up
-        printf("%p\n",buff);
+        //printf("%p\n",buff);
         // Inside this region the device data pointer will be used
         #pragma acc host_data use_device(buff)
         {
-            printf("%p\n",buff);
+            //printf("%p\n",buff);
 
             for(i=0; i<nn; i++) {
                 MPI_Allreduce(MPI_IN_PLACE, buff, ll, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
